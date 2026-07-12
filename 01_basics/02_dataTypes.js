@@ -11,6 +11,27 @@ console.log("bk");
 // 6)symbol(ES6):Used to create unique identifiers. 7)BigInt:Used for very large integers.
 // || Non-Primitive (Reference) 1)object 2)array, 3)function
 
+//typeof: Checking Data Types
 
 let price = 99.99;  
-console.log(price);
+let age = 21
+let name = "bk";
+let isLoggedIn = true
+let num = null
+let day ;
+let state = ""
+let temprature = 0
+let bigNumber = 12n
+console.table([price, age, name, isLoggedIn, num, day, bigNumber, state, temprature]);
+
+console.log(typeof 10);             // number
+console.log(typeof "Hello");        // string
+console.log(typeof true);           // boolean
+console.log(typeof undefined);      // undefined
+console.log(typeof Symbol());       // symbol
+console.log(typeof 10n);            // bigint
+console.log(typeof {});             // object
+console.log(typeof []);             // object
+console.log(typeof function(){});   // function
+console.log(typeof null);           // object (JavaScript bug): This is a historical bug in JavaScript that has been kept for backward compatibility
+console.log(typeof 1234567891234567899); //number  
