@@ -1,3 +1,6 @@
+/*JavaScript is a dynamically typed language.
+What is Dynamically Typed? A dynamically typed language is one where you don't need to declare the data type of a variable. JavaScript determines the type automatically at runtime. */
+
 /*variable:A variable is a container used to store data. You can store numbers, text, booleans, objects, arrays, etc., in a variable.
 JavaScript provides three ways to declare variables:1) const (Recommended for fixed values, cant change) 2)let (Can be reassigned, Cannot be redeclared in the same scope, Block-scoped.) 
 3)var (Old way):Can be reassigned, Can be redeclared, Function-scoped.*/
