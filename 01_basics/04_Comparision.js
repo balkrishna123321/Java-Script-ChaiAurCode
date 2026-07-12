@@ -22,7 +22,7 @@ console.log(5 !== 5);     // false
 //5. Greater Than (>)
 console.log(10 > 5);   // true
 console.log(5 > 10);   // false
-
+console.log("2">1);    // true
 
 
 //6. Less Than (<)
