@@ -1,5 +1,5 @@
 // A String is a sequence of characters used to represent text. You can create a string using: Single quotes (' '), Double quotes (" "), Backticks (` `) - Template Literals
-const Myname = new String("Balkrishna")   
+const Myname = new String("Balkrishna")   //rarely used
 console.log(typeof Myname); //object : string is a object there not array
 
 
@@ -41,5 +41,7 @@ console.log(name.slice(-4,8)); //sh
 
 let line = "My name is balkrishna patidar"
 console.log(line.split(' ')); //split the line into array on the basis of space(' ')
+
+// String Immutability: Strings are immutable in JavaScript: You cannot change a character directly.  To modify a string, create a new one
 
 
