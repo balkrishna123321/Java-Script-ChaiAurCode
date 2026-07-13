@@ -46,7 +46,7 @@ console.log(Math); // Object [Math] {}
 // Common Math Methods: 1) Math.abs(): Returns the absolute (positive) value.
 console.log(Math.abs(-10)); //10
 //2) Math.round(): Rounds to the nearest integer.
-console.log(Math.round(4.6)); //5
+console.log(Math.round(4.5)); //5
 console.log(Math.round(4.4)); //4
 
 // 3) Math.ceil(): Rounds up. 4) Math.floor(): Rounds down. 5) Math.trunc(): Removes the decimal part.
