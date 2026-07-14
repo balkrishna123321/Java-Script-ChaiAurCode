@@ -95,3 +95,21 @@ console.log(obj); //{ name: 'Balkrishna', age: 20 }
 console.log(typeof obj); //object
 
 //Why Do We Need JSON? Suppose your React app sends data to a Node.js server.
+// Suppose your React app sends data to a Node.js server.
+// Object in JavaScript
+const user6 = {
+    name: "Balkrishna",
+    age: 20
+};
+// Before sending it over the internet, it is converted to JSON: using JSON.stringify(user);
+// The server receives the JSON string and converts it back into an object: using const obj = JSON.parse(json);
+// This is how data is commonly exchanged in web applications.
+
+/* Diff between JavaScript Object and JSON?
+| JavaScript Object                                       | JSON                                              |
+| ------------------------------------------------------- | ------------------------------------------------- |
+| Stored in JavaScript memory                             | Text format (string)                              |
+| Can contain functions, methods, and `undefined`         | Cannot contain functions or `undefined`           |
+| Keys may be quoted or unquoted (when valid identifiers) | Keys must always be enclosed in double quotes     |
+| Type is `object`                                        | Type is `string` until parsed with `JSON.parse()` |
+*/
