@@ -29,8 +29,37 @@ bk, Welcome to the website
 
 function chai(){
     const userName="BalkrishnaPatidar";
-    console.log(this.userName); // 'userName' is a local variable, not a property of 'this'. Therefore this.userName is undefined.
-    console.log(this); // In non-strict mode (Node.js), 'this' inside a normal function refers to the global object.  In strict mode, it is undefined.
+    console.log(this.userName); //undefine: 'userName' is a local variable, not a property of 'this'. Therefore this.userName is undefined.
+    //console.log(this); //<ref *1> Object [global]:  In non-strict mode (Node.js), 'this' inside a normal function refers to the global object.  In strict mode, it is undefined.
     
 }
 chai() 
+
+//Arrow function
+const chai1 = () => {
+    const userName="BalkrishnaPatidar";
+    console.log(this.userName); // undefine 
+    console.log(this); //{}
+    
+}
+chai1() 
+//basic arrow function: explicit return
+const addTwo = (num1, num2) =>{
+    return num1+num2
+}
+console.log(addTwo()); //NaN
+console.log(addTwo(5,5)); //10
+
+//implicit return arrow function: remove parenthesis{}, return :  used more in react
+const addTwo2 = (num1, num2) => (num1+num2)
+console.log(addTwo2(5,5)); //10 
+//if you want to return object 
+const addTwo3 = () => ({username:"balkrishna"})
+console.log(addTwo3()); // { username: 'balkrishna' }
+
+const myArray = [2, 4, 7, 9, 3, 0, 1];
+myArray.forEach((item) => (console.log(item)));
+
+
+
+
