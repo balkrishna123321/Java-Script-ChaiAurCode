@@ -121,4 +121,15 @@ Complete Flow Diagram:
                                 ▼
                         Call Stack Empty
 
+                        Quick Revision
+Every JavaScript program starts by creating a Global Execution Context (GEC).
+Every function call creates a new Function Execution Context (FEC).
+Each execution context has:
+Memory Creation Phase: variables → undefined, function declarations → full function definitions.
+Execution Phase: code runs line by line, values are assigned, and functions are executed.
+JavaScript uses a Call Stack (LIFO) to manage execution contexts.
+When a function is called, its execution context is pushed onto the call stack.
+When the function returns, its execution context is popped off the call stack and its local variables are no longer accessible.
+After the Global Execution Context finishes and the call stack becomes empty, the program has completed execution.
+
 */
