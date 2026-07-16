@@ -101,12 +101,12 @@ one1();
 if(true){
     const username = "bk"
     if(username==="bk"){
-        const course = "youtube"
-        console.log();
-        
+        const course = " youtube"
+        console.log(username+course);  //bk youtube
     }
+    // console.log(course); // ReferenceError: course is not defined
 }
-
+//console.log(username); //ReferenceError: username is not defined
 
 // Search order: two1() → looks for c1 → if not found, looks in one1() for b1 → if not found, looks in Global for a1.
 /*var vs let vs const
@@ -117,3 +117,19 @@ if(true){
 | Redeclare | ✅ Yes  | ❌ No     | ❌ No     |
 | Hoisted   | Yes     | Yes (TDZ)  | Yes (TDZ) |
 */
+
+//Expression: In JavaScript, there are two common ways to create a function:1) Function Declaration , 2)Function Expression
+// 1. Function Declaration: A function is declared using the function keyword followed by a function name. 1)Has a name. 2)Hoisted completely. 3)Can be called before it is defined.
+// 2. Function Expression: A function is stored in a variable. 1)Function is treated like a value. 2)Usually assigned to a variable. 3)Not fully hoisted.
+console.log(addOne(5)) //6
+function addOne(num){ //this is a function declaration
+    return num+1
+}
+console.log(addOne(5)); //6 we can write this line before function declaration it also work but in expression
+
+// console.log(addTwo(5)) //ReferenceError: Cannot access 'addTwo' before initialization
+const addTwo = function(num){  // this is also a function called function Expression because it store in variable
+    return num+2 
+}
+console.log(addTwo(5)); //7   we can not write this line before function initialization in function expression it doesnot work because here we store the value in variable not only declare
+ 
