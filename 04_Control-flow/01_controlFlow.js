@@ -129,17 +129,3 @@ do {
 } while (j <= 10); //11
 //break: Stops the loop immediately. continue: Skips the current iteration.
 
-//  Loop Types: 1)for...of: Used for arrays and strings.
-const arr = [10, 20, 30];
-for (const value of arr) {
-    console.log(value); // 10, 20, 30 
-}
-//2)for...in: Used for objects.
-const user = {
-    name: "Balkrishna",
-    age: 20
-};
-for (const key in user) {
-    console.log(key, user[key]);
-} //name Balkrishna
-  //age 20
