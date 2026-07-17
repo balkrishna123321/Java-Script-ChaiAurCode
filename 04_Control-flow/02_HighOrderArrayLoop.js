@@ -3,7 +3,7 @@ means if you have array obeasly you need to iterate it so we implement some meth
 The most commonly used higher-order array methods are:
 forEach()
 map()
-filter()
+filter()  (see in 03_HighOrderArrayLoops.js file)
 reduce()
 find()
 findIndex()
