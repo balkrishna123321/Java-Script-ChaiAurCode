@@ -98,3 +98,48 @@ switch (day) {
 } //Tuesday
 
 
+// Loops: Loops repeat code. 1)for loop
+for (let i = 1; i <= 5; i++) {
+    console.log(i);
+}
+//nested for loop
+for (let i = 1; i <= 5; i++) {
+    console.log(`outer value ${i}`);
+    for (let j = 1; j <= 5; j++) {
+        console.log(`inner value ${j} and outer value ${i}`);
+    }
+}
+//2)while-loop:
+let i = 1;
+while (i <= 5) {
+    console.log(i);
+    i++;
+}
+let myarr = ["ak", "bk", "dk", "ck"]
+let sarr = 0;
+while(sarr<myarr.length){
+    console.log(`element value is ${myarr[sarr]}`);
+    sarr++
+}
+//do...while: Runs at least once.
+let j = 11;
+do {
+    console.log(j);
+    j++;
+} while (j <= 10); //11
+//break: Stops the loop immediately. continue: Skips the current iteration.
+
+//  Loop Types: 1)for...of: Used for arrays and strings.
+const arr = [10, 20, 30];
+for (const value of arr) {
+    console.log(value); // 10, 20, 30 
+}
+//2)for...in: Used for objects.
+const user = {
+    name: "Balkrishna",
+    age: 20
+};
+for (const key in user) {
+    console.log(key, user[key]);
+} //name Balkrishna
+  //age 20
