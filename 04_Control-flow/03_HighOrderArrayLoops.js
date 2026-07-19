@@ -67,3 +67,28 @@ const myTotal = mynums.reduce( (acc, curr) => {
     return acc + curr
 },0) //this 0 is initial value of acc/ accumulator 
 console.log(myTotal); //at last 55
+
+//what if we have object in array to add in shoping cart
+const myShoppingCart = [
+    {
+        itemName : "js course",
+        price : 2999
+    },
+    {
+        itemName : "py course",
+        price : 999
+    },
+    {
+        itemName : "MD course",
+        price : 5999
+    },
+    {
+        itemName : "DS course",
+        price : 12999
+    },
+]
+const myTotalBill = myShoppingCart.reduce( (acc, curr) => {
+    console.log(`item Name ${curr.itemName} and price ${curr.price} `);
+    return acc = acc+(curr.price);
+},0)
+console.log("Total bill pay: "+myTotalBill);
