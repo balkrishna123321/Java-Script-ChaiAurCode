@@ -1,4 +1,5 @@
-<!--what is DOM?: DOM = Document Object Model: When a browser loads an HTML page, it converts the HTML into a tree-like object structure.-->
+<!--what is DOM?: DOM = Document Object Model: When a browser loads an HTML page, it converts the HTML into a tree-like object structure.
+DOM manipulation ka matlab hai JavaScript se HTML page ko control karna : Browser HTML ko objects mein convert kar deta hai. jise JS access kar sakti hai.-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,10 +7,21 @@
     <meta charset="UTF-8">
     <title>DOM Learning</title>
 </head>
-<body>
+<body>      
     <div class="bg-black">
-        <h1 class="heading">DOM learning on chai or code</h1>
+        <h1 id="title" class="heading">DOM learning on chai or code <span style="display: none;">by hitesh sir</span></h1>
         <p>Lorem ipsum dolor sit amet.</p>
+        <h2> 1 this is h2 </h2>
+        <h2> 2 this is h2</h2>
+        <h2> 3 this is h2</h2>
+        <input type="password" name="" id="">
+        <ul>
+            <li class="list-item">one</li>
+            <li class="list-item">two</li>
+            <li class="list-item">three</li>
+            <li class="list-item">four</li>
+        </ul>
+
     </div>
 </body>
 </html>
@@ -29,6 +41,73 @@ Document Object: The browser gives a global object called document.*/
 // we can manipulate the elements: go inspact, open console write document.getElementById('firstHeading'): you see the heading and can manipulate/change
 //write document.getElementById('firstHeading').innerHTML = "Balkrishna" 
 
-/Selecting Elements: This is the most important DOM skill.
-1) getElementById
-HTML: -->
+<h1 id="title">Hello</h1> Browser isse ek object bana deta hai jise JS access kar sakti hai.
+
+open browser html page go inspact open console and do this:
+Selecting Elements 1) getElementById: #document.getElementById("title");# #document.getElementById("title").id# gives 'title'(id name)
+#document.getElementById("title").getAttribute('id')# gives 'title'
+#document.getElementById("title").setAttribute('id', 'title2')# override krega hamesha or id change kr dega
+
+#const title = document.getElementById("title2");# #title#  where document = poori webpage, getElementById() = id se element select krna(pakadna)
+we can apply styling on the page through it 
+ #title.style.backgroundColor="blue"# #title.style.padding="15px"# #title.style.borderRadius="15px"#
+
+//intresting: add content  title: <h1 id="title2" class="heading" style="background-color: blue; padding: 15px; border-radius: 15px;">DOM learning on chai or code</h1>
+#title.textContent# or #title.innerText or #title.innerHTML# gives 'DOM learning on chai or code' but diff is:
+we add <span>by hitesh sir</span> text in h1 heading text and style = "display:none" in span  you see "by hitesh sir" text is removed and not showing on display so 
+title.textContent: 'DOM learning on chai or code by hitesh sir'
+itle.innerText:    'DOM learning on chai or code'
+title.innerHTML:   'DOM learning on chai or code <span style="display: none;">by hitesh sir</span>'
+
+//queryselecter
+document.querySelector('h2') : <h2>​ 1 this is h2 ​</h2>​
+document.querySelector('#title')
+document.querySelector('.heading')
+document.querySelector('input[type="password"]')
+it allow to write all css selecter
+
+document.querySelector('ul') unordered list of 3 list item store it in a constant for further uses
+const myul = document.querySelector('ul')
+myul.querySelector('li'): gives first list item <li>"one"​​</li>​ then store it in a const for further uses
+const turnGreen = myul.querySelector('li')  turnGreen.style.color = 'green'  turnGreen.style.backgroundColor = 'yellow'  turnGreen.style.padding = '10px'
+turnGreen.style.innertext = 'five'
+
+document.querySelectorAll("li") : NodeList(3) [li, li, li] :  look like an array but it is not an array  store it in a const
+const tempNodeList = document.querySelectorAll("li") Nodelist is not purly an array because if you check property there is no method like map and all but there is foreach loop available
+tempNodeList[0].style.color = 'green'    access using index
+
+const myH1 = document.querySelectorAll('h1')
+myH1   gives a NodeList [h1#title.heading]
+myH1[0].style.color = 'red'  
+
+//forEach loop
+tempNodeList.forEach(function (l) {
+    l.style.color = 'blue',
+    l.style.backgroundColor = 'green'
+    console.log(l)
+})
+
+2) getElementsByClassName: 
+document.getElementsByClassName('list-item') it gives HTMLCollection not NodeList and there is no forEach loop in the HTMLCollection so how i access? convert into array
+const classList = document.getElementsByClassName('list-item')
+Array.from(classList)  this convert HTMLCollection into array
+const myConvertedArray = Array.from(classList)
+myConvertedArray.forEach(function (item) {  we apply the forEach loop on this array
+    console.log(item)
+})
+
+go to javascript wikipedia : https://en.wikipedia.org/wiki/JavaScript
+document.querySelectorAll('h2')  gives all NodeList(15)
+const allH2 = document.querySelectorAll('h2')
+allH2[1]   allH2[1].textContent   
+
+allH2.forEach(function (item) {
+    item.style.color = 'red',
+    item.style.backgroundColor = 'yellow',
+    item.style.padding = '10px',
+    item.innerText = 'Balkrishna'
+})
+
+
+
+ -->
