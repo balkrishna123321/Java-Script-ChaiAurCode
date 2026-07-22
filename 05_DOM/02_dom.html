@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 2 HTML</title>
+</head>
+<body>
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+</body>
+
+<script>
+    //DOM Relationship: parent to child move
+    const parent = document.querySelector('.parent')
+    console.log(parent)  //all days shown in console portion
+    console.log(parent.children) //give HTMLCollection of all 4 days
+    console.log(parent.children[2]) //give: <div class="day">Wednesday</div>
+    console.log(parent.children[2].innerHTML) // Wednesday
+
+    for(let i=0; i<parent.children.length; i++){
+        console.log(parent.children[i].innerHTML)  //Monday  Tuesday  Wednesday  Thursday
+    }
+
+    parent.children[1].style.color='green'  //change color of tuesday to green
+    console.log(parent.firstElementChild)  //<div class="day">Monday</div>
+    console.log(parent.lastElementChild)   //<div class="day">Thursday</div>
+
+    //can move from child to parent also
+    const dayOne = document.querySelector('.day')
+    console.log(dayOne)  // <div class="day">Monday</div>  itself
+    console.log(dayOne.parentElement)  //<div class="parent"> parent
+    console.log(dayOne.nextElementSibling)  //<div class="day" style="color: green;">Tuesday</div>  print next sibling tuesday of monday
+    console.log(dayOne.previousElementSibling)  //null  there is no previous of monday
+
+    console.log("NODES", parent.childNodes)  //give NodeList of 9 elements : it include spaces, text and all
+    
+
+</script>
+
+</html>
+
+
+
+<!--1. DOM Relationships: Think of HTML like a family tree.
+HTML:
+<div id="parent">
+    <h1>Title</h1>
+    <p>Paragraph</p>
+    <button>Click</button>
+</div>
+
+Tree:
+div (parent)
+├── h1 (child)
+├── p (child)
+└── button (child)
+
+Parent Element
+Select parent from a child.
+const para = document.querySelector("p");
+console.log(para.parentElement);
+Output: <div id="parent">...</div>
+Meaning: p is the child, div is the parent, Children Elements
+
+Get all child elements of a parent.
+const parent = document.getElementById("parent");
+console.log(parent.children);
+Output: HTMLCollection(3) [h1, p, button]
+
+Access by index:
+console.log(parent.children[0]); // h1
+console.log(parent.children[1]); // p
+console.log(parent.children[2]); // button
+First and Last Child
+console.log(parent.firstElementChild); // h1
+console.log(parent.lastElementChild);  // button
+
+These are very commonly used.: Sibling Elements
+Elements on the same level are called siblings.
+HTML:
+<h1>Title</h1>
+<p>Paragraph</p>
+<button>Click</button>
+h1, p, and button are siblings.
+
+Next Sibling
+const h1 = document.querySelector("h1");
+console.log(h1.nextElementSibling);
+Output: <p>Paragraph</p>
+Previous Sibling
+const button = document.querySelector("button");
+console.log(button.previousElementSibling);
+Output: <p>Paragraph</p>
+Quick Relationship Table
+-->
