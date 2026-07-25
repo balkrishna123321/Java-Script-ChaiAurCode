@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Creation</title>
+    <!--2. Creating a New Element: This is the most important DOM manipulation skill.-->
+</head>
+<body>
+      
+</body>
+
+<script>
+    //Step 1: Create the Element: Use const div = document.createElement("div");: At this stage, the element exists only in memory and is not visible on the webpage.
+    const div = document.createElement("div"); //visit console: there is a element div but not visible on screen/page
+    console.log(div);
+    div.textContent = "Hello DOM ";
+    //adding attributes
+    div.className = "main"
+    div.id = 123
+    div.id = Math.round(Math.random()*10+1)
+    //set attributes
+    div.setAttribute("title", "generated title")
+    //Add Styles
+    div.style.backgroundColor = "lightblue";
+    div.style.padding = "20px";
+    div.style.borderRadius = "10px";
+
+    // div.innerHTML = "balkrishna"
+    const addText = document.createTextNode("Balkrishna") //prefer
+    div.appendChild(addText);
+    
+    //Add to the Page: this contant are in memory only if you want to show on the page then
+    document.body.appendChild(div) 
+//This creates a new div dynamically.
+/*appendChild(): parent.appendChild(child); Accepts only a Node (element) and Returns the appended element.
+append(): parent.append(child, "Hello"); Can append elements and text together and More flexible.*/
+</script>     
+
+</html>
