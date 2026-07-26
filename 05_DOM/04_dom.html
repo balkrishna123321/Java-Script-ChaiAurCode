@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM manipulation</title>
+</head>
+<body>
+    <ul class="language">
+        <li>
+            javascript
+        </li>
+    </ul>
+    
+</body>
+
+<script>
+    //unordered list li jisme list item javascript rakha ab hame or bhi language k name add krne h to kese krenge? kai tarike ho skte h 
+    //ham 1 function likhenge jisme langName input lenge list item create krenge, input lenge, queryselecter ki help se class language select krna h, or isko append krna h
+    function addLanguage(langName){
+        const li = document.createElement('li')
+        li.innerHTML = `${langName}`
+        document.querySelector('.language').appendChild(li)
+    }
+    addLanguage("Python")
+    addLanguage("java"); //itni jyada acha idea nhi h kyuki isme pura tree triverse kr k niche jana pad ra h add krne k liye to optimization issue h
+
+    //same function but optimization se
+    function addOptiLanguage(langName){
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector('.language').appendChild(li)
+    }
+    addOptiLanguage('typescript')
+
+    //Edit: if i want to change the value?
+    const editLang = document.querySelector("li:nth-child(2)")
+    // editLang.innerHTML("bk")
+    const newLi = document.createElement('li')
+    newLi.textContent = "Mojo"
+    editLang.replaceWith(newLi)
+
+    //remove element
+    const removeLang = document.querySelector("li:nth-child(2)")
+    removeLang.remove();
+
+
+</script>
+
+</html>
+
+
+
+
+

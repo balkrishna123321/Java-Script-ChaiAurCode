@@ -1,5 +1,5 @@
 // Arrays: An Array is a special object used to store multiple values in a single variable. js arrays are recyzable(can add elements after allocation)
-// in js arrays can contain a mix of different tata types
+// in js arrays can contain a mix of different data types
 let arr= [0, 1, 2, 3, 4, 5]
 console.log(arr); // [ 0, 1, 2, 3, 4, 5 ]
 //Access array elements

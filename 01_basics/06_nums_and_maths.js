@@ -5,7 +5,7 @@ console.log(score); //400 autometically define its a number
 console.log(typeof score); //type: number
 
 
-// You can also create a number using the Number constructor(ecplicitly).
+// You can also create a number using the Number constructor(explicitly).
 const num1 = new Number(400)
 console.log(num1); //[Number: 400]  : specificaly cast it is a number
 console.log(typeof num1); //type: object
