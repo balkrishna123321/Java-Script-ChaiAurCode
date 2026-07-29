@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events HTML</title>
+</head>
+<body >
+    <h2>Amazing Images</h2>
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="photoshop.jpg" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="japan.jpg" alt=""></li>
+            <li><img width="200px" id="river" src="river.jpg" alt=""></li>
+            <li><img width="200px" id="owl" src="owl.jpg" alt=""></li>
+            <li><img width="200px" id="prayer" src="prayer.jpg" alt=""></li>
+            <li><a href="https://www.google.com/" id="google">Google</a>  </li>
+        </ul>
+    </div>
+</body>
+<script>
+    //document.getElementById('photoshop').onclick = function(){ old method: onclick, attachEvent, JQuery-on
+    //  alert('photoshop clicked')
+    //}
+
+    //modern approch: addEventListener
+    const click = document.getElementById('photoshop')
+    click.addEventListener('click', function(){
+        alert("butten photoshop clicked")
+    }, false) //false default hota h 
+
+    //object event
+    click.addEventListener('click', function(e){
+        console.log(e)
+    })
+
+    //event type
+    click.addEventListener('click', function(e){
+        console.log(e.type) //click
+    })
+
+    // Event Propagation: When you click the button, the event doesn't happen only on the button. It travels through the DOM. There are 3 phases of event propagation.
+    // 1. Capturing Phase, 2. Target Phase, 3. Bubbling Phase
+    //1. Capturing Phase (Top → Bottom): The event starts from the top of the DOM and moves down to the clicked element. (html-body-div-ul-li) Because true means Capturing Phase.
+    //2. Target Phase: Now the event reaches the actual clicked element.
+    //3. Bubbling Phase (Bottom → Top): After reaching the target, the event goes upward. false which means Bubbling Phase.
+    //Third Parameter of addEventListener() if true --> capturing otherwise Bubbling 
+    document.getElementById('images').addEventListener('click', function(e){console.log("clicked inside the ul")})
+    document.getElementById('owl').addEventListener('click', function(e){console.log("clicked at owl")})
+    //first "clicked at owl" then "clicked inside the ul" this is bubbling because it move through Bottom → Top (having bydefault false)
+
+    //after third parameter give true
+    document.getElementById('images').addEventListener('click', function(e){console.log("clicked inside the ul")},true)
+    document.getElementById('owl').addEventListener('click', function(e){console.log("clicked at owl")},true)
+    //first "clicked inside the ul" then "clicked at owl" this is capturing because it move through top → Bottom
+    
+    //if we do "stopproPogation" bubling stop and dont go upper(top)
+    document.getElementById('owl').addEventListener('click', function(e){
+        console.log("clicked at owl")
+        e.stopPropagation() //"clicked at owl" only run this if we dont want bubbling
+        console.log(event.timeStamp);
+        console.log(event.clientX) //145 Returns the horizontal (X) position of the mouse inside the browser window.
+        console.log(event.clientY) //Returns the vertical (Y) position of the mouse inside the browser window.
+        console.log(event.screenX)//Returns the mouse position relative to the entire computer screen.
+        console.log(event.screenY) //Returns the mouse position relative to the computer screen.
+        console.log(event.altKey); //true if we click alt otherwise false
+        console.log(event.shiftKey);
+        console.log(event.keyCode)//Enter	13, Space	32, A	65
+
+    })
+
+    document.getElementById('google').addEventListener('click', function(e){
+        e.preventDefault() //do not open the google 
+        console.log("clicked inside the google") //first "clicked inside the google" then  "clicked inside the ul" due to priventDefault() but
+        e.stopPropagation() //stop propogation and print "clicked inside the google" only 
+    }, false)
+    
+
+    //if i want to click at any image then it disappear //1-1 image ki id to lenge nhi ham inke parent ul ki id lenge
+    document.querySelector('#images').addEventListener('click', function(e){
+        console.log(e.target)//give all images target like: <img width="200px" id="river" src="river.jpg" alt>
+        console.log(e.target.parentNode) //it gives the full <li>...</li>
+        //let removeIt = e.target.parentNode //isme to li mil gya h hme 
+        //removeIt.remove() //if we click on image it remove the image but when we click on the li item(link or other side) it remove all the items so we use tagName()
+        console.log(e.target.tagName) //give IMG, LI, etc based on where you click
+        if(e.target.tagName==='IMG'){
+            let removeIt = e.target.parentNode 
+            removeIt.remove() 
+        }
+    })
+</script>
+</html>
+
+<!--type, timestamp, defaultprivented, target, toelement, srcelement, currenttarget, clintX, clintY, screenX, screenY, altkey, ctrlkey, shiftKey, keycode
+1. event.type: Returns the type of event that occurred. ✅ Use: To know which event was triggered.
+2. event.timeStamp: Returns the time (in milliseconds) from when the page started loading until the event occurred.
+   3456.78 It means the button was clicked about 3.4 seconds after the page loaded. ✅ Use: Measuring user interaction time.
+3. event.preventDefault(): Stops the browser's default behavior. Ex. Link Clicked:The page does not navigate to Google. Normally, a form reloads the page, preventDefault() stops that reload.
+4. event.target: Returns the actual element that triggered the event. if you click an image: <img> ✅ Remember: Target = "Who started the event?"
+5. event.currentTarget: Returns the element on which the event listener is attached. event.currentTarget <div id="parent">
+6. event.srcElement:srcElement is an old Internet Explorer property. It behaves like:event.target
+Modern JavaScript uses: event.target ✅ Do not use srcElement in new code.
+7. event.toElement: Also an old property. It was mainly used with mouse events to know which element the mouse entered.
+Today, use: event.relatedTarget or Standard mouse events ✅ Avoid using toElement in modern projects.
+8. event.clientX: Returns the horizontal (X) position of the mouse inside the browser window
+9. event.clientY: Returns the vertical (Y) position of the mouse inside the browser window.
+10. event.screenX: Returns the mouse position relative to the entire computer screen.
+11. event.screenY: Returns the mouse position relative to the computer screen.
+12. event.altKey: Returns true if the Alt key was pressed.
+13. event.ctrlKey: Returns true if the Ctrl key was pressed.
+14. event.shiftKey: Returns true if the Shift key was pressed.
+15. event.keyCode (Deprecated): Earlier, it returned the numeric code of the pressed key.
+key vs code vs keyCode
+Property	   Example	  Status
+event.key	   "a"	     ✅Recommended
+event.code	   "KeyA"	 ✅ Recommended
+event.keyCode	65	     ❌ Deprecated
+-->
+
+
+
+<!--Events in JavaScript
+What is an Event? An event is an action that happens on a webpage.
+The action can be done by: User (click, type, scroll, press a key): Browser (page loads, window resizes)
+JavaScript can listen to these events and perform some action.
+
+Common Events: Event	When it Happens
+click:User clicks an element, dblclick:User double-clicks, mouseover:Mouse enters an element, mouseout:Mouse leaves an element, keydown:A key is pressed
+keyup:A key is released, input:Input value changes, change:Value changes and loses focus, submit:Form is submitted, load:Page finishes loading
+
+Event Handling: Event Handling means writing JavaScript code that runs when an event occurs.
+
+1)addEventListener(): This is the most common and recommended way to handle events.
+const button = document.getElementById("btn");
+button.addEventListener("click", function () {
+    console.log("Button Clicked");
+});
+
+Syntax
+element.addEventListener(event, callback);
+Parameters
+element → The HTML element
+event → Event name (click, keydown, etc.)
+callback → Function that runs when the event happens
+
+Using an Arrow Function
+button.addEventListener("click", () => {
+    console.log("Hello");
+});
+Why Use addEventListener()? Because it: Allows multiple event listeners, Keeps HTML and JavaScript separate, Is the modern approach
+
+The Event Object: Every event automatically provides an event object.
+button.addEventListener("click", function(event) {
+    console.log(event);
+}); The event object contains information about the event.
+
+#Useful Event Properties
+1)event.target: Returns the element that triggered the event.
+button.addEventListener("click", function(event) {
+    console.log(event.target);
+});
+2)event.type
+button.addEventListener("click", function(event) {
+    console.log(event.type);
+}); Output: click
+3)event.clientX & event.clientY
+Mouse position.
+document.addEventListener("click", function(event) {
+    console.log(event.clientX, event.clientY);
+});
+
+Keyboard Events
+document.addEventListener("keydown", function(event) {
+    console.log(event.key);
+}); Press:A Output:a
+Input Events
+HTML : <input id="name" placeholder="Enter Name">
+const input = document.getElementById("name");
+input.addEventListener("input", function(event) {
+    console.log(event.target.value);
+}); Every time you type, the value is printed.
+
+Form Submit Event
+const form = document.getElementById("myForm");
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    console.log("Form Submitted");
+});
+Why preventDefault()?: Normally a form reloads the page after submission. preventDefault() stops that default browser behavior.
+
+Event Bubbling
+<div id="parent">
+    <button id="child">Click</button>
+</div>
+parent.addEventListener("click", () => {
+    console.log("Parent");
+});
+child.addEventListener("click", () => {
+    console.log("Child");
+});
+Click the button: Output: Child Parent
+This is called Event Bubbling. Events move from child to parent.
+
+stopPropagation(): Stops the event from moving upward.
+child.addEventListener("click", function(event){
+    event.stopPropagation();
+    console.log("Child");
+}); Output: Child, The parent event does not execute.
+
+Event Capturing: Normally events bubble upward. Capturing is the opposite.
+parent.addEventListener(
+    "click",
+    () => {
+        console.log("Parent");
+    },
+    true
+);
+
+Event Delegation (Very Important): Instead of adding an event to every child, add one event listener to the parent.
+HTML
+<ul id="list">
+    <li>JavaScript</li>
+    <li>Python</li>
+    <li>Java</li>
+</ul>
+JavaScript
+const list = document.getElementById("list");
+list.addEventListener("click", function(event) {
+    console.log(event.target.textContent);
+});
+If you click Python: Output: Python
+Why use Event Delegation? Better performance, Less code, Works for dynamically added elements
+
+removeEventListener()
+function greet() {
+    console.log("Hello");
+}
+button.addEventListener("click", greet);
+button.removeEventListener("click", greet);
+The function will no longer run.
