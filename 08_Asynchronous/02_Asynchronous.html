@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async 2</title>
+</head>
+<body>
+    <h1>hello</h1>
+    <button id="stop">Stop</button>
+</body>     
+<script>
+    //setTimeout(): this is a method and also call an API. you see this method in window object in console. ye core javaScript k function nhi h ye browser k through milte h
+    setTimeout(function(){ //handler/function and timeout(in ms): 2000ms/2second
+        console.log("Balkrishna Patidar") //print Balkrishna after 2 seconds in console
+    }, 2000)
+    // you can store this function in a variable and can give reference in it
+    const sayHello = function(){
+        console.log("Hello balkrishna patidar")
+    }
+    setTimeout(sayHello, 2000) //print Hello balkrishna patidar after 2 sec
+
+    //if i want to change text of h1
+    document.querySelector('h1').innerHTML="Hellow new"
+    // if i want to change it after 2 second
+    const changeH1 = function(){
+        document.querySelector('h1').innerHTML="Hellow new h1" 
+    }
+    const changeMe = setTimeout(changeH1, 2000)//change text after 2 sec
+
+    //clearTimeout()  if i want to stop before change text
+    //clearTimeout(changeMe) // ye changes ko rok dega but me chahta hu ki agar 2 sec se pahle stop click kru tab ruke change to?
+    const stopChanges = document.querySelector('#stop').addEventListener('click', function(){
+        clearTimeout(changeMe)  //stop changes if you click before 2 sec on stop button
+        console.log("Stopped")
+    })
+    
+</script>
+</html>

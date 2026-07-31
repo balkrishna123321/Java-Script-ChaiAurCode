@@ -1,0 +1,72 @@
+<!--if you use only js engine it block the code, chock the exicution code, decrease the performance because it is single threaded: meaning it can do only one task at a time
+so you can use it in any runtime environment like browser, nodejs etc.
+Execution context: execute one line of a code at a time
+-->
+
+<!--Asynchronous: JavaScript default is single-threaded, meaning it can do only one task at a time. Everything runs one after another. This is called Synchronous Execution.
+Synchronous means: One task starts only after the previous task finishes.
+
+Problem with Synchronous Code: Imagine: Download File: 5 Seconds, If JavaScript waits for 5 seconds, Everything freezes.
+Button won't work, Animation stops, Page becomes unresponsive : Solution? Asynchronous Programming: Asynchronous means: JavaScript starts a task and doesn't wait for it to finish.
+Instead, It continues executing the next code. Why Async JavaScript? Because many operations take time.
+Examples: API Requests, Database Queries, Reading Files, Timers, User Clicks, GPS, Camera, Fetching Images : JavaScript doesn't wait.
+
+but JavaScript is Single Threaded: JavaScript has One Thread and One Call Stack: Only one task executes at a time. So how does async work? Answer: The Browser helps JavaScript.
+JavaScript Runtime: JavaScript itself has only Memory Heap+Call Stack : Browser provides Web APIs, Examples: setTimeout, DOM Events, Fetch API, Geolocation, Console
+JavaScript Runtime Diagram:
+                Browser
+┌──────────────────────────────┐
+│ Web APIs                     │
+│                              │
+│ setTimeout                   │
+│ fetch()                      │
+│ DOM Events                   │
+│ Geolocation                  │
+└──────────────┬───────────────┘
+               │
+               ▼
+         Callback Queue
+               │
+               ▼
+        Event Loop
+               │
+               ▼
+          Call Stack
+This is the heart of Async JavaScript.
+
+Call Stack: Call Stack executes functions.
+function one(){ two(); } function two(){ three(); } function three(){ console.log("Hello"); } one();
+Web APIs: When JavaScript sees
+setTimeout(()=>{
+    console.log("Done");
+},2000);
+It does NOT execute the timer. Instead, Call Stack → Browser Web API → Wait 2 sec → Callback Queue
+Callback Queue: Finished callbacks wait here. FIFO (First In First Out)
+setTimeout() → Callback Queue
+
+Event Loop: This is the most important concept. Event Loop keeps checking, if Call Stack Empty? YES → Move Callback → Execute
+
+Blocking vs Non-Blocking
+Blocking: while(true){} : Nothing else executes.
+Non Blocking
+setTimeout(()=>{
+    console.log("Hello");
+},1000);
+Program continues.
+Callback Functions: A callback is A function passed into another function.
+
+
+Promises: A Promise represents A value that will be available now or later. Three States 1)Pending 2)Fulfilled or 3)Rejected
+Creating Promise:
+const promise = new Promise((resolve,reject)=>{
+    let success = true;
+    if(success){
+        resolve("Success");
+    }
+    else{
+        reject("Failed");
+    }
+});
+
+
+-->
