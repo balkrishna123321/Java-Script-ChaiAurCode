@@ -54,7 +54,7 @@
     document.getElementById('owl').addEventListener('click', function(e){console.log("clicked at owl")},true)
     //first "clicked inside the ul" then "clicked at owl" this is capturing because it move through top → Bottom
     
-    //if we do "stopproPogation" bubling stop and dont go upper(top)
+    //if we do "stopProPogation" bubling stop and dont go upper(top)
     document.getElementById('owl').addEventListener('click', function(e){
         console.log("clicked at owl")
         e.stopPropagation() //"clicked at owl" only run this if we dont want bubbling
