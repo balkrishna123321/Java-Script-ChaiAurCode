@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const requestURL = 'https://api.github.com/users/balkrishna123321'
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', requestURL)
+    console.log(xhr.readyState) //1
+    xhr.onreadystatechange = function(){
+        console.log(xhr.readyState) //2  3  4
+        if(xhr.readyState===4){
+            console.log(this.responseText) //puri details of requestURL isme aa jayegi
+            //const data = this.responseText
+            //console.log(typeof data) //string  but we give it into object because jb bhi url se data response aata h string me hi aata h hamesha to ham isko object me convert krte h 
+            //jese number me krne k liye Number() likhte the, string k liye String() vese hi object me krnr k liye JSON.parse() ka use krte h
+            const data = JSON.parse(this.responseText)
+            console.log(typeof data) //object
+            console.log(data.followers) //2
+            console.log(data.avatar_url) //give link of your photo
+        } 
+
+    }    
+    xhr.send()
+</script>
+</html>
+
+
+<!--V8 Engine: JavaScript is only a language. It cannot run by itself. It needs a JavaScript Engine. Google created a JavaScript engine called V8. It is used in: Google Chrome, Node.js
+What does V8 do? It converts JavaScript code into Machine Code(0s & 1s) that CPU Executes. Without a JavaScript Engine, browsers cannot understand JavaScript.  
+
+API stands for: Application Programming Interface Simple meaning: An API allows two applications to communicate.
+JavaScript Example: fetch("https://api.github.com/users/octocat") This sends a request to the GitHub server.
+JSON?  JSON(JavaScript Object Notation). Most APIs send data in JSON.
+Example
+{
+    "name": "Balkrishna",
+    "age": 23
+}
+JavaScript converts it into an object. const obj = JSON.parse(jsonData);
+XMLHttpRequest (XHR)? Before fetch() existed, JavaScript used XMLHttpRequest. It allows JavaScript to communicate with a server without reloading the page. This technology is called AJAX.
+Creating an XHR Object: const xhr = new XMLHttpRequest(); This creates a request object.
+1)Opening a Request: xhr.open("GET", "https://api.github.com/users/octocat");
+Parameters: GET → HTTP Method, URL → API Address : Nothing is sent yet.
+2)Sending the Request: xhr.send(); Now the request is sent to the server.
+3)Receiving the Response
+xhr.onload = function () {
+    console.log(xhr.responseText);
+}; responseText contains the server response as a string.
+
+Complete XHR Example
+const xhr = new XMLHttpRequest();
+xhr.open("GET", "https://api.github.com/users/octocat");
+xhr.onload = function () {
+    console.log(xhr.responseText);
+};
+xhr.send();
+
+Ready State: XHR goes through different stages. Property:xhr.readyState
+Ready State Values
+State	Meaning
+0	Request not initialized
+1	Connection opened (open())
+2	Request sent
+3	Response is being received
+4	Response completed
+When it reaches 4, the request is complete
+
+HTTP Status Code: After the response arrives, check: xhr.status
+Example:
+if(xhr.status === 200){
+    console.log("Success");
+}
+Common Status Codes
+Code	Meaning
+200	    OK
+201	    Created
+400	    Bad Request
+401	    Unauthorized
+403	    Forbidden
+404	    Not Found
+500	    Server Error
+
+GitHub API: GitHub provides free APIs.
+Example: https://api.github.com/users/octocat
+Response
+{
+    "login":"octocat",
+    "followers":10000,
+    "public_repos":8
+}
+JavaScript
+fetch("https://api.github.com/users/octocat")
+.then(res=>res.json())
+.then(data=>{
+    console.log(data.login);
+});
+
+Random User API: A free API for generating fake users.
+JSON Formatter: API responses are usually one long line.
+Example: {"name":"John","age":20} Hard to read. A JSON Formatter formats it.
+{
+    "name": "John",
+    "age": 20
+} Much easier to understand.
+-->
